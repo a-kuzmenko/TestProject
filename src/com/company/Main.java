@@ -14,7 +14,7 @@ public class Main {
        System.out.println(dasha);
         System.out.println(masha.age);
         System.out.println(masha.height);
-        masha.goToTheMovies();
+        masha.goToTheMovies("yes");
 
         Girl shasha = new Girl("Shasha", 23, 175);
         masha.goToTheRest("Mack");

@@ -53,12 +53,15 @@ public class Girl {
         }
     }
 
-    public void goToTheRest(String rest) {
+    public String goToTheRest(String rest) {
         if ("Mac".equals(rest)) {
-            System.out.println("no");
+           // System.out.println("no");
+            return "no";
         } else {
-            System.out.println("yes");
+            //System.out.println("yes");
+            return "yes";
         }
+        //return rest;
     }
 
 }
