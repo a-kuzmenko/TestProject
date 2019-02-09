@@ -1,7 +1,5 @@
-package com.company;
+package Class8_OOP;
 
-
-import java.util.Scanner;
 
 public class Main {
 
@@ -17,8 +15,11 @@ public class Main {
         masha.goToTheMovies("yes");
 
         Girl shasha = new Girl("Shasha", 23, 175);
-        masha.goToTheRest("Mack");
-        System.out.println();
+
+        System.out.println(" Her answer " + masha.goToTheRest("Mack"));
+
+        masha = null;
+        System.out.println(masha);
 
     }
 }

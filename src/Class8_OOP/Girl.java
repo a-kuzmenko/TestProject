@@ -1,4 +1,4 @@
-package com.company;
+package Class8_OOP;
 
 import java.util.Scanner;
 
@@ -46,11 +46,7 @@ public class Girl {
                     System.out.println("???");
         }
 
-        if (answear == true) {
-            System.out.println("Let's go at 5 pm");
-        } else {
-            System.out.println("Rain check then");
-        }
+
     }
 
     public String goToTheRest(String rest) {
