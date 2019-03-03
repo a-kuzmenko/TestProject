@@ -42,6 +42,6 @@ public class Main {
                 .limit(10)
                 .forEach(System.out::println);
 
-        
+
     }
 }
