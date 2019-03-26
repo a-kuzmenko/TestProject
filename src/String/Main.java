@@ -125,13 +125,10 @@ public class Main {
 
         System.out.println(String.format("%s age = %d weight = %g %n", "John", 20, 80.4));
 
-        int i = Integer.parseInt("kitty123".replaceAll("[\\D]", ""));
-        int j = Integer.parseInt("123kitty".replaceAll("[\\D]", ""));
-        int k = Integer.parseInt("1k2itt3y".replaceAll("[\\D]", ""));
+        System.out.println(Integer.parseInt("kitty123".replaceAll("[\\D]", "")));
+        System.out.println(Integer.parseInt("123kitty".replaceAll("[\\D]", "")));
+        System.out.println(Integer.parseInt("1k2itt3y".replaceAll("[\\D]", "")));
 
-        System.out.println(i);
-        System.out.println(j);
-        System.out.println(k);
 
         System.out.println("001234-cat".replaceFirst("^0*", ""));
     }
