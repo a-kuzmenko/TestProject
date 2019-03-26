@@ -6,124 +6,65 @@ import java.util.Random;
  * Created by akuzmenko on 3/15/2019.
  */
 public class Female extends People {
-    boolean gender = false;
-    String first_name;
-    String last_name;
-    float high;
-    float weight;
 
-    public Female(boolean gender, String first_name, String last_name, float high, float weight) {
-        this.gender = gender;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.high = high;
-        this.weight = weight;
+
+    public Female(String first_name, String last_name, float high, float weight) {
+        super(false, first_name, last_name, high, weight);
     }
 
     public Female() {
 
     }
 
-    @Override
-    public String toString() {
-        return "Female{" +
-                "gender=" + gender +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", high=" + high +
-                ", weight=" + weight +
-                '}';
-    }
+
+//- "иметь отношения" (возвращает Человек)
+//    если “говорить” && “терпеть/выдерживать общество” && “проводить время вместе” равно
+//    true, то если свойство “пол” собственного экземпляра и пол аргумента одинаковые, то
+//    вернуть null, иначе
+//    3 / 3
+//    создать экземпляр нового человека путем вызова метода “родить человека” у экземпляра
+//    с полом Ж.
 
     @Override
-    boolean speak(boolean m, boolean f) {
-
-        if (m == false && f == false)
-        {
-            return true;
-        }
-        else if (m == false && f == true){
-            return true;
-        }
-        else if (m == true && f == false){
-            return true;
-        }
-        else if (m == true && f == true){
-            Random r1 = new Random();
-            if (r1.nextInt(100) < 50)
-            {
-                return true;
+    People haveRelationship(People other) {
+        if((this.speak(other) && this.tolerate(other)&& this.spendTimeTogether(other))) {
+            if (this.gender != other.gender) {
+                return newPerson(this);
             }
-            else
-                return false;
+            return null;
         }
-        return false;
+        return null;
     }
 
-    @Override
-    boolean tolerate(boolean m, boolean f) {
-        if (m == false && f == false){
-            Random r2 = new Random();
-            if (r2.nextInt(100) < 5){
-                return true;
-            }
-        }
-        else if (m == false && f == true){
-            Random r3 = new Random();
-            if (r3.nextInt(100) < 70){
-                return true;
-            }
-        }
-        else if (m == true && f == false){
-            Random r4 = new Random();
-            if (r4.nextInt(100) < 70){
-                return true;
-            }
-        }
-        else if (m == true && f == true){
-            Random r5 = new Random();
-            if (r5.nextInt(100) < 5.6){
-                return true;
-            }
-        }
-        {
-            return false;
-        }
-    }
 
-    @Override
-    boolean spendTimeTogether(float m, float f) {
+//дополнительный метод - "родить человека" (возвращает экземпляр
+//    человека)
+//Создать новый экземпляр женщины или мужчины с вероятностью 0.5 со следующими
+//    свойствами:
+//    - имя (String) - ввести с консоли
+//    - фамилия (String) - берется у экземпляра с мужским полом
+//    - рост (float) - копируется у соответствующего экземпляра с таким же полом + 0.1*(рост
+//    экземпляра противоположного рода минус рост однородного экземпляра)
+//    - вес (float) - аналогично росту
 
-        if ((m <= f) && ((m * 1.1) > f)){//больше на 10%
-            Random rTog1 = new Random ();
-            if (rTog1.nextInt(100) < 85){
-                return true;
-            }
-            else if ((m >= f) && ((m * 1.1)<f)){//меньше на 10%
-                Random rTog2 = new Random ();
-                if (rTog2.nextInt(100) < 95){
-                    return true;
-                }
-                return false;
-            }
-        }
-        return false;
-    }
+    People newPerson (People p){
+        Random r = new Random();
+        boolean gender = r.nextBoolean();
+        
+        People child;
+        String name = "Name";
+        String last_name = p.last_name;
 
-    @Override
-    People haveRelationship(People p) {
-        return p;
-
-
-    }
-
-    People newPerson (boolean gender){
-        People p;
-        if (gender == false){
-            p = new Female();
-        } else {
-            p = new Male();
-        }
-        return p;
+        float baseHeight = gender ? p.high : this.high;
+        float otherHeight = gender ? this.high : p.high;
+        float height = baseHeight + (0.1f * (otherHeight - baseHeight));
+        
+        float baseWeight = gender ? p.high : this.high;
+        float otherWeight = gender ? this.high : p.high;
+        float weight = baseWeight + (0.1f * (otherWeight - baseWeight));
+        
+        child = gender ? new Male(name, last_name,height, weight) : new Female(name, last_name,height, weight);
+        return child;
+        
     }
 }

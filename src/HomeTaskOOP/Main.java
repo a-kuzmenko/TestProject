@@ -8,34 +8,20 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) {
-        People [] p = new People[2];
-        p [0] = new Male(true,"Vasia","Vasiliev",185,100);
-        p [1] = new Female(false,"Maria","Solovieva",165,110);
-
-        for (People h : p){
-            System.out.println(h);
-            System.out.println(h.speak(true, true));
-            System.out.println(h.tolerate(false, true));
-            System.out.println(h.spendTimeTogether(100, 120));
-
-        }
+        /*
+        Необходимо написать консольное приложение, в котором сначала нужно ввести значения
+        свойств, для двух экземпляров людей (женщины и мужчины в произвольном порядке,
+                возможны варианты ЖЖ, МЖ, ЖМ и ММ).
+                Затем программа должна провести тест на совместимость и дать прогноз на результат
+        отношений двух данных экземпляров. Алгоритм следующий:
+        1. Метод “тест на совместимость” принимает два экземпляра людей и должен возвратить
+        экземпляр человека или null.
+        2. Вызвать метод “иметь отношения” первого экземпляра человека с аргументом - второй
+        экземпляр.
+        2 / 3
+        3. Полученный результат вернуть как результат работы метода “тест на совместимость”.
+*/
 
     }
-    static boolean valueOf (BufferedReader readerGender)throws IOException {
-        while (true) {
-            System.out.println("Insert gender M/F: ");
 
-            String genderStr = readerGender.readLine();
-            if (genderStr.isEmpty()) {
-                System.out.println("You did not insert gender!");
-                continue;
-            }
-            if ("m".equalsIgnoreCase(genderStr)) {
-                return true;
-            }
-            if ("f".equalsIgnoreCase(genderStr)) {
-                return false;
-            }
-        }
-    }
 }
