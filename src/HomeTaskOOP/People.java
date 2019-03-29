@@ -31,7 +31,7 @@ public abstract class People {
     //  М Ж true
     //  М М с вероятностью 0.5
     boolean speak(People other) {
-        if (this.gender == true && other.gender == true) {
+        if (this.gender && other.gender) {
             Random r1 = new Random();
             return r1.nextInt(100) < 50;
         }
@@ -46,7 +46,7 @@ public abstract class People {
 
      boolean tolerate(People other){
          Random r = new Random();
-         if (this.gender == false && other.gender == false){
+         if (!this.gender && !other.gender){
              return r.nextInt(100) < 5 ;
          } else if (this.gender == false && other.gender == true){
              return r.nextInt(100) < 70;
@@ -65,21 +65,33 @@ public abstract class People {
 
     boolean spendTimeTogether(People other){
         Random r = new Random ();
-        if ((this.high <= other.high) && ((this.high * 1.1) > other.high)){//более чем на 10%
-            return r.nextInt(100) < 85;
-            } else if ((this.high >= other.high) && ((this.high * 1.1) < other.high)){//менее чем на 10%
+        float percent = (this.high - other.high) / this.high * 100;
+        if(Math.abs(percent) < 10 ){
             return r.nextInt(100) < 95;
+        }else {
+            return r.nextInt(100) < 85;
         }
-        return false;
     }
 
+    //  100   90           (180 - 170) = 10  / 180 * 100
 
-    abstract People haveRelationship(People other);
+
+    People haveRelationship(People other){
+        if((this.speak(other) && this.tolerate(other)&& this.spendTimeTogether(other))) {
+            if (this.gender != other.gender) {
+                Male male = (Male) (this.gender ? this : other);
+                Female female = (Female) (this.gender ? other : this);
+                return female.newPerson(male);
+            }
+            return null;
+        }
+        return null;
+    }
 
     @Override
     public String toString() {
         return "People{" +
-                "gender=" + gender +
+                "gender=" + (gender ? "Male" : "Female") +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", high=" + high +

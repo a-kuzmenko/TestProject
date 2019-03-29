@@ -1,6 +1,7 @@
 package HomeTaskOOP;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by akuzmenko on 3/15/2019.
@@ -12,9 +13,7 @@ public class Female extends People {
         super(false, first_name, last_name, high, weight);
     }
 
-    public Female() {
 
-    }
 
 
 //- "иметь отношения" (возвращает Человек)
@@ -25,7 +24,7 @@ public class Female extends People {
 //    создать экземпляр нового человека путем вызова метода “родить человека” у экземпляра
 //    с полом Ж.
 
-    @Override
+  /*  @Override
     People haveRelationship(People other) {
         if((this.speak(other) && this.tolerate(other)&& this.spendTimeTogether(other))) {
             if (this.gender != other.gender) {
@@ -35,7 +34,7 @@ public class Female extends People {
         }
         return null;
     }
-
+*/
 
 //дополнительный метод - "родить человека" (возвращает экземпляр
 //    человека)
@@ -50,17 +49,19 @@ public class Female extends People {
     People newPerson (People p){
         Random r = new Random();
         boolean gender = r.nextBoolean();
-        
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the " + (gender ? "Male" : "Female") +" name > ");
         People child;
-        String name = "Name";
+        String name = scanner.nextLine();
         String last_name = p.last_name;
 
         float baseHeight = gender ? p.high : this.high;
         float otherHeight = gender ? this.high : p.high;
         float height = baseHeight + (0.1f * (otherHeight - baseHeight));
         
-        float baseWeight = gender ? p.high : this.high;
-        float otherWeight = gender ? this.high : p.high;
+        float baseWeight = gender ? p.weight : this.weight;
+        float otherWeight = gender ? this.weight : p.weight;
         float weight = baseWeight + (0.1f * (otherWeight - baseWeight));
         
         child = gender ? new Male(name, last_name,height, weight) : new Female(name, last_name,height, weight);

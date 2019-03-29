@@ -10,12 +10,6 @@ public class Male extends People {
         super(true, first_name, last_name, high, weight);
     }
 
-    public Male() {
-    }
 
 
-    @Override
-    People haveRelationship(People p) {
-        return null;
-    }
 }
