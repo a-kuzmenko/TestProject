@@ -1,9 +1,11 @@
 package Exception;
 
 import Class8_OOP.Girl;
+import com.sun.org.glassfish.external.statistics.Stats;
 
 import java.io.IOException;
 import java.io.StreamCorruptedException;
+import java.util.Arrays;
 
 /**
  * Created by UITS-Admin on 24.03.2019.
@@ -83,9 +85,42 @@ public class Main {
         System.out.println("iob overage is " + w);
 
 
+        if(isIn(2,inums)) {
+            System.out.println("2 is in nums");
+        }
+
+        if(!isIn(7,inums)) {
+            System.out.println("7 is not in nums");
+        }
 
 
+        Integer [] a2 = {1, 2, 3, 4, 5, 6, 7};
+        MyClass <Integer> myclass = new MyClass<Integer>(a2);
+        for(int i = 0; i< a2.length; i++) {
+            System.out.print(a2[i] +" ");
+        }
+        System.out.println();
 
+        System.out.println("min > " + myclass.min());
+        System.out.println("max > " + myclass.max());
+        Girl[] girls = {
+                new Girl("ket", 29, 158),
+                new Girl("mira", 19, 168),
+                new Girl("ira", 46, 90)};
+
+        MyClass <Girl> girl = new MyClass<Girl>(girls);
+
+        System.out.print(Arrays.toString(girls) + "\n");
+        System.out.println("max > " + girl.max());
+        System.out.println("min > " + girl.min());
+
+    }
+
+    static <T, V extends T> boolean isIn(T x, V[] y){
+        for(int i = 0; i < y.length; i++)
+            return  true;
+
+        return  false;
 
     }
 }

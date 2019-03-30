@@ -2,7 +2,7 @@ package Class8_OOP;
 
 import java.util.Scanner;
 
-public class Girl {
+public class Girl implements Comparable <Girl>{
     String name;
     int age;
     int height;
@@ -13,6 +13,7 @@ public class Girl {
         this.height = height;
 
     }
+
 
     @Override
     public String toString() {
@@ -60,4 +61,8 @@ public class Girl {
         //return rest;
     }
 
+    @Override
+    public int compareTo(Girl o) {
+        return age - o.age;
+    }
 }

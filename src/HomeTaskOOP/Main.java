@@ -41,12 +41,7 @@ public class Main {
             System.out.println("ничего не вышло... разбежались");
         }
 
-        //m.haveRelationship(f);
-/*
-        if (gender2 != gender1) {
-            ((Female)f).newPerson(newp);
-        }
-*/
+
 
 
     }
@@ -56,7 +51,7 @@ public class Main {
         boolean gender = r.nextBoolean();
 
         Scanner s = new Scanner(System.in);
-        System.out.print("Enter name > ");
+        System.out.print("Enter "+(gender ? "Male" : "Female")+" name > ");
         String name = s.nextLine();
         System.out.print("Enter last_name > "  );
         String last_name = s.nextLine();
